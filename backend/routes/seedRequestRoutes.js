@@ -1,4 +1,3 @@
-// routes/seedRequestRoutes.js
 const express = require('express');
 const router = express.Router();
 const seedRequestController = require('../controllers/seedRequestController');
@@ -17,5 +16,8 @@ const upload = multer({ storage: storage });
 
 // Route to create a new seed request
 router.post('/', upload.single('image'), seedRequestController.createSeedRequest);
+
+// Route to fetch seed requests by user ID
+router.get('/', seedRequestController.getSeedRequestsByUser);
 
 module.exports = router;

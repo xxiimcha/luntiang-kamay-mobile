@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "924433587276",
+    "project_id": "luntiangkamay-55fe2",
+    "storage_bucket": "luntiangkamay-55fe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924433587276:android:52a0b11104d4fe6c5ee8e9",
+        "android_client_info": {
+          "package_name": "com.example.luntiangkamay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTKTX-rRxoZYAYO7nAhUJboZ_nDMmGlpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
