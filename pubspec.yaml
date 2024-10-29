@@ -39,6 +39,7 @@ dependencies:
   tflite_flutter: ^0.11.0
   http: ^1.2.2
   shared_preferences: ^2.3.2
+  tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const seedRequestRoutes = require('./routes/seedRequestRoutes');
+const plantRoutes = require('./routes/plantRoutes'); // Import the plant routes
 const path = require('path');
 
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(mongoURI, {
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/seed-requests', seedRequestRoutes);
+app.use('/api/plants', plantRoutes); // Add plant routes
 
 // Server listening
 const PORT = process.env.PORT || 3000;
