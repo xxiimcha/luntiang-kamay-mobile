@@ -12,4 +12,7 @@ router.post('/login', userController.loginUser);
 // Get user by ID route
 router.get('/:userId', userController.getUserById);
 
+// Update user profile route (with optional profile image upload)
+router.put('/:userId', userController.updateUserProfile);
+
 module.exports = router;

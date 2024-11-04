@@ -44,11 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
 
-    print('Fetching plants for user: $_userId');
+    print('Fetching plants for user ID: $_userId');
     try {
       final response = await http.get(
-        Uri.parse('${Config.apiUrl}/api/plants?userId=$_userId'),
+        Uri.parse('${Config.apiUrl}/api/plants/$_userId'),
       );
+
+      print('API Response status: ${response.statusCode}');
+      print('API Response body: ${response.body}');
 
       if (response.statusCode == 200) {
         final List<dynamic> responseData = jsonDecode(response.body);
@@ -67,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
       print("Error fetching plants: $error");
     }
   }
+
 
   void _toggleSidebar() {
     setState(() {

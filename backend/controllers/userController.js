@@ -1,8 +1,21 @@
-// controllers/userController.js
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 require('dotenv').config();
+
+// Configure multer for file upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Set the upload destination
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Set the file name
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // Helper function to send error responses consistently
 const sendErrorResponse = (res, statusCode, message) => {
@@ -26,21 +39,18 @@ exports.registerUser = async (req, res) => {
   const { username, email, password, role } = req.body;
 
   try {
-    // Check if email is already registered
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return sendErrorResponse(res, 400, 'Email already registered');
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
-      role: role || 'user', // Default role if not provided
+      role: role || 'user',
     });
 
     await newUser.save();
@@ -64,22 +74,18 @@ exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return sendErrorResponse(res, 404, 'User not found');
     }
 
-    // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return sendErrorResponse(res, 400, 'Invalid credentials');
     }
 
-    // Generate JWT token
     const token = generateToken(user);
 
-    // Send token and user info as response
     res.status(200).json({
       message: 'Login successful',
       token,
@@ -101,7 +107,7 @@ exports.getUserById = async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const user = await User.findById(userId).select('-password'); // Exclude password field
+    const user = await User.findById(userId).select('-password');
     if (!user) {
       return sendErrorResponse(res, 404, 'User not found');
     }
@@ -111,3 +117,33 @@ exports.getUserById = async (req, res) => {
     sendErrorResponse(res, 500, 'Server error');
   }
 };
+
+// Update user profile with optional profile image upload
+exports.updateUserProfile = [
+  upload.single('profileImage'), // Middleware to handle image upload
+  async (req, res) => {
+    const { userId } = req.params;
+    const { username, email, phone } = req.body;
+    const updateData = { username, email, phone };
+
+    if (req.file) {
+      updateData.profileImage = req.file.path; // Store the file path in the profileImage field
+    }
+
+    try {
+      const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true }).select('-password');
+
+      if (!updatedUser) {
+        return sendErrorResponse(res, 404, 'User not found');
+      }
+
+      res.status(200).json({
+        message: 'Profile updated successfully',
+        user: updatedUser,
+      });
+    } catch (error) {
+      console.error('Update profile error:', error);
+      sendErrorResponse(res, 500, 'Server error');
+    }
+  }
+];

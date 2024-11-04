@@ -27,7 +27,9 @@ app.use('/api/seed-requests', seedRequestRoutes);
 app.use('/api/plants', plantRoutes); // Add plant routes
 
 // Server listening
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 5000;
+const HOST = '0.0.0.0';  // Use this to bind to all available network interfaces
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 });
