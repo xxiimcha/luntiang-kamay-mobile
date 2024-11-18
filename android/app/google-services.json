@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "174331654904",
+    "project_id": "nutrivision-8876b",
+    "storage_bucket": "nutrivision-8876b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174331654904:android:41cb31801b6e41f61fc10d",
+        "android_client_info": {
+          "package_name": "com.example.data_page"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwklBY2lLxIHl1SzVrWsWi__dW1zw63xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174331654904:android:a51f77e8219a522a1fc10d",
+        "android_client_info": {
+          "package_name": "com.luntiangkamy.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwklBY2lLxIHl1SzVrWsWi__dW1zw63xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
