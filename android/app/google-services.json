@@ -26,6 +26,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:174331654904:android:f03b8f0c6eef18fc1fc10d",
+        "android_client_info": {
+          "package_name": "com.example.luntiangkamay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwklBY2lLxIHl1SzVrWsWi__dW1zw63xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:174331654904:android:a51f77e8219a522a1fc10d",
         "android_client_info": {
           "package_name": "com.luntiangkamy.app"
