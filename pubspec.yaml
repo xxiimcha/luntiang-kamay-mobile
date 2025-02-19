@@ -39,7 +39,7 @@ dependencies:
   tflite_flutter: ^0.11.0
   http: ^1.2.2
   shared_preferences: ^2.3.2
-  tflite: ^1.1.2
+  tflite: 1.1.2
   video_player: ^2.9.2
   firebase_storage: ^12.3.5
   mailer: ^6.2.0
